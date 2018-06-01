@@ -5,7 +5,7 @@ import java.util.Scanner;
 public class Yahtzee {
 
 	public static void main(String[] args) {
-		StartSpel.starten(); 
+			StartSpel.starten(); 
 
 	}
 

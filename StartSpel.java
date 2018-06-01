@@ -12,10 +12,12 @@ public class StartSpel {
 		speler1.naam = Yahtzee.invoeren();
 		System.out.println("Voer de naam van speler 2 in: ");
 		speler2.naam = Yahtzee.invoeren();
-		System.out.println("Naam speler 1: " + speler1.naam + " en naam speler 2: "+ speler2.naam);
+		// System.out.println("Naam speler 1: " + speler1.naam + " en naam speler 2: "+ speler2.naam);
 		System.out.println("Bedankt voor het invoeren. Het spel gaat beginnen!");
 		Speler spelerAanZet = speler1;
-		System.out.println("speler aan zet:  " + spelerAanZet.naam );
-		Beker.gooien(spelerAanZet);
+		// System.out.println("speler aan zet:  " + spelerAanZet.naam );
+		Beker beker = new Beker();
+		beker.setSpelers(speler1, speler2, spelerAanZet);
+		beker.gooien();
 	}
 }
