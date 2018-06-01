@@ -1,7 +1,7 @@
 package yahtzeePackage;
 
 public class StartSpel {
-
+	
 	
 	
 	static void starten() {
@@ -13,6 +13,9 @@ public class StartSpel {
 		System.out.println("Voer de naam van speler 2 in: ");
 		speler2.naam = Yahtzee.invoeren();
 		System.out.println("Naam speler 1: " + speler1.naam + " en naam speler 2: "+ speler2.naam);
-		System.out.println("Test");
+		System.out.println("Bedankt voor het invoeren. Het spel gaat beginnen!");
+		Speler spelerAanZet = speler1;
+		System.out.println("speler aan zet:  " + spelerAanZet.naam );
+		Beker.gooien(spelerAanZet);
 	}
-};
+}
