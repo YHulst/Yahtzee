@@ -1,5 +1,9 @@
 package yahtzeePackage;
 
-public class Dobbelsteen {
 
+public class Dobbelsteen {
+	int aantalOgen;	
+	
+
+	
 }

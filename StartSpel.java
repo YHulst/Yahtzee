@@ -18,6 +18,6 @@ public class StartSpel {
 		// System.out.println("speler aan zet:  " + spelerAanZet.naam );
 		Beker beker = new Beker();
 		beker.setSpelers(speler1, speler2, spelerAanZet);
-		beker.gooien();
+		beker.beurt();
 	}
 }

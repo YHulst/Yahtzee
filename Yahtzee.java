@@ -1,5 +1,6 @@
 package yahtzeePackage;
 
+import java.util.Random;
 import java.util.Scanner;
 
 public class Yahtzee {
@@ -15,4 +16,5 @@ public class Yahtzee {
 		return scanner.next();
 	}
 	
+		
 }
