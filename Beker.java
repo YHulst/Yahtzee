@@ -35,7 +35,10 @@ public class Beker {
 		dobstenen.add(new Dobbelsteen());
 		dobstenen.add(new Dobbelsteen());
 		dobstenen.add(new Dobbelsteen());
-		gooien(dobstenen);
+		ArrayList<Dobbelsteen> worp = gooien(dobstenen);
+	/*	System.out.print("gereturnde worp: ");
+		for (Dobbelsteen dobst : worp) {
+			System.out.print(dobst.aantalOgen + "   ");	}  */
 		
 		beurtWisseling();
 		System.out.println("Nu is " + spelerAanZet.naam);			
@@ -60,32 +63,58 @@ public class Beker {
 			System.out.println("Type ja of nee");
 			antwoord = Yahtzee.invoeren();
 		}
-		if (antwoord.equals("ja")) {
-			// hier moet nog iets
-			System.out.println("Je hebt 'ja' geantwoord");			
+		if (antwoord.equals("ja")) {		
+			// System.out.println("Je hebt 'ja' geantwoord");
+			worp = opnieuwGooien(worp);
+			System.out.print("Je hebt voor de tweede keer gegooid! Uitkomst tweede worp: ");
 			for (Dobbelsteen dobst : worp) {
-				System.out.print("Wil je deze dobbelsteen opnieuw gooien? (j/n):  ");
-				System.out.println(dobst.aantalOgen);
-				char antw = Yahtzee.charInvoeren();
-				System.out.println(antw);
-				while (antw != 'j' && antw != 'n') {
-					System.out.println("Type j of n");
-					antw = Yahtzee.charInvoeren();
-				if (antw == 'j') {
+				System.out.print(dobst.aantalOgen + "   ");	}
+			System.out.println(" ");
+			System.out.println("Wil je opnieuw gooien (ja/nee)?");
+			antwoord = Yahtzee.invoeren();
+			while (!(antwoord.equals("ja")) && !(antwoord.equals("nee"))) {
+				System.out.println("Type ja of nee");
+				antwoord = Yahtzee.invoeren();
+			}
+			if (antwoord.equals("ja")) {
+				worp = opnieuwGooien(worp);
+				System.out.print("Je hebt voor de derde keer gegooid! Uitkomst derde worp: ");
+				for (Dobbelsteen dobst : worp) {
+					System.out.print(dobst.aantalOgen + "   ");	}
+				System.out.println("");
+				return worp;
+			} else if (antwoord.equals("nee")) {
+				return worp;
+			}
+		} else if (antwoord.equals("nee")) {
+				// System.out.println("Je hebt 'nee' geantwoord");
+				return worp;
+			}
+		
+				
+		return worp;
+	}
+	
+	
+	
+	ArrayList<Dobbelsteen> opnieuwGooien(ArrayList<Dobbelsteen> worp){
+		System.out.println(" ");
+		for (Dobbelsteen dobst : worp) {
+			System.out.print("Wil je deze dobbelsteen opnieuw gooien? (ja/nee):  ");
+			System.out.println(dobst.aantalOgen);
+			String antwoord = Yahtzee.invoeren();
+			while (!(antwoord.equals("ja")) && !(antwoord.equals("nee"))) {
+				System.out.println("Type ja of nee");
+				antwoord = Yahtzee.invoeren(); }
+			if (antwoord.equals("ja")) {
 					int randomNum = ThreadLocalRandom.current().nextInt(1, 7);
 					dobst.aantalOgen = randomNum;
 					System.out.println("Je gooit deze dobbelsteen opnieuw.");
 				}
-				
-				}
-			}
-			return worp;
-		} else if (antwoord.equals("nee")) {
-			System.out.println("Je hebt 'nee' geantwoord");
-			return worp;
-		} 
-		
+			System.out.println(" ");
+		}
 		return worp;
+		
 	}
 
 }
