@@ -35,7 +35,6 @@ public class Beker {
 		dobstenen.add(new Dobbelsteen());
 		dobstenen.add(new Dobbelsteen());
 		dobstenen.add(new Dobbelsteen());
-		dobstenen.add(new Dobbelsteen());
 		gooien(dobstenen);
 		
 		beurtWisseling();
@@ -63,7 +62,23 @@ public class Beker {
 		}
 		if (antwoord.equals("ja")) {
 			// hier moet nog iets
-			System.out.println("Je hebt 'ja' geantwoord");
+			System.out.println("Je hebt 'ja' geantwoord");			
+			for (Dobbelsteen dobst : worp) {
+				System.out.print("Wil je deze dobbelsteen opnieuw gooien? (j/n):  ");
+				System.out.println(dobst.aantalOgen);
+				char antw = Yahtzee.charInvoeren();
+				System.out.println(antw);
+				while (antw != 'j' && antw != 'n') {
+					System.out.println("Type j of n");
+					antw = Yahtzee.charInvoeren();
+				if (antw == 'j') {
+					int randomNum = ThreadLocalRandom.current().nextInt(1, 7);
+					dobst.aantalOgen = randomNum;
+					System.out.println("Je gooit deze dobbelsteen opnieuw.");
+				}
+				
+				}
+			}
 			return worp;
 		} else if (antwoord.equals("nee")) {
 			System.out.println("Je hebt 'nee' geantwoord");
