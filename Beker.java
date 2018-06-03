@@ -39,8 +39,11 @@ public class Beker {
 	/*	System.out.print("gereturnde worp: ");
 		for (Dobbelsteen dobst : worp) {
 			System.out.print(dobst.aantalOgen + "   ");	}  */
+		spelerAanZet.scorekaart.setSpelerAanZet(spelerAanZet);
+		spelerAanZet.scorekaart.toonMenu();
 		
 		beurtWisseling();
+		System.out.println(" ");
 		System.out.println("Nu is " + spelerAanZet.naam);			
 	}
 	
@@ -48,14 +51,12 @@ public class Beker {
 	
 	
 	ArrayList<Dobbelsteen> gooien(ArrayList<Dobbelsteen> worp){
-		System.out.print("Dit is je eerste worp: ");
-				
+		System.out.print("Dit is je eerste worp: ");				
 		for (Dobbelsteen dobst : worp) {
 			int randomNum = ThreadLocalRandom.current().nextInt(1, 7);
 			dobst.aantalOgen = randomNum;
 			System.out.print(dobst.aantalOgen + "   ");			
-		}
-		
+		}		
 		System.out.println(" ");
 		System.out.println("Wil je opnieuw gooien (ja/nee)?");
 		String antwoord = Yahtzee.invoeren();
