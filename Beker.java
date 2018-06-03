@@ -23,28 +23,40 @@ public class Beker {
 		} else if (spelerAanZet == speler2) {
 			spelerAanZet = speler1;
 		}
+		System.out.println(" ");
+		System.out.println("Nu is " + spelerAanZet.naam + ".");
+		beurt();
 			}
 	
 		
-	void beurt() {
-		System.out.println(" ");
-		System.out.println(spelerAanZet.naam + " is aan de beurt.");
+	void beurt() {	
+		spelerAanZet.aantalBeurten += 1;
 		ArrayList<Dobbelsteen> dobstenen = new ArrayList();
 		dobstenen.add(new Dobbelsteen());
 		dobstenen.add(new Dobbelsteen());
 		dobstenen.add(new Dobbelsteen());
 		dobstenen.add(new Dobbelsteen());
 		dobstenen.add(new Dobbelsteen());
-		ArrayList<Dobbelsteen> worp = gooien(dobstenen);
-	/*	System.out.print("gereturnde worp: ");
-		for (Dobbelsteen dobst : worp) {
-			System.out.print(dobst.aantalOgen + "   ");	}  */
+		ArrayList<Dobbelsteen> worp = gooien(dobstenen);	
 		spelerAanZet.scorekaart.setSpelerAanZet(spelerAanZet);
-		spelerAanZet.scorekaart.toonMenu();
-		
-		beurtWisseling();
-		System.out.println(" ");
-		System.out.println("Nu is " + spelerAanZet.naam);			
+		spelerAanZet.scorekaart.toonMenu(worp);		
+		if (speler2.aantalBeurten == 11) {
+			spelStoppen();
+		}
+		beurtWisseling();					
+	}
+	
+	void spelStoppen() {
+		System.out.print("\n" + "Einde spel. ");
+		if (speler1.totaleScore > speler2.totaleScore) {
+			System.out.println(speler1.naam + " heeft gewonnen!");
+		} else if (speler1.totaleScore < speler2.totaleScore) {
+			System.out.println(speler2.naam + " heeft gewonnen!");
+		} else if (speler1.totaleScore == speler2.totaleScore) {
+			System.out.println("Het is gelijkspel!");
+		}
+		System.out.println("Eindscore " + speler1.naam + ": " + speler1.totaleScore + " punten.");
+		System.out.println("Eindscore " + speler2.naam + ": " + speler2.totaleScore + " punten.");
 	}
 	
 	
@@ -65,7 +77,6 @@ public class Beker {
 			antwoord = Yahtzee.invoeren();
 		}
 		if (antwoord.equals("ja")) {		
-			// System.out.println("Je hebt 'ja' geantwoord");
 			worp = opnieuwGooien(worp);
 			System.out.print("Je hebt voor de tweede keer gegooid! Uitkomst tweede worp: ");
 			for (Dobbelsteen dobst : worp) {
@@ -87,8 +98,7 @@ public class Beker {
 			} else if (antwoord.equals("nee")) {
 				return worp;
 			}
-		} else if (antwoord.equals("nee")) {
-				// System.out.println("Je hebt 'nee' geantwoord");
+		} else if (antwoord.equals("nee")) {				
 				return worp;
 			}
 		
